@@ -135,3 +135,24 @@ for(let i = 0; i < images.length; i++){
   );
 };
 
+//AUTOPLAY
+let autoplay = setInterval(   //Ripeti tot volte nel tempo questo:
+    function() {
+            // Rimuoviamo la classe active dall'item attivo corrente
+            items[activeItem].classList.remove("active");
+            thumbnail[activeItem].classList.remove("thumbActive");
+      
+            // Aggiorniamo activeItem con l'indice del thumbnail cliccato
+            if(activeItem < images.length - 1){
+              activeItem = activeItem + 1;
+              console.log(activeItem);
+            }else {
+              activeItem = 0;
+            }
+            
+      
+            // Aggiungiamo la classe active all'item e al thumbnail cliccati
+            items[activeItem].classList.add("active");
+            thumbnail[activeItem].classList.add("thumbActive"); 
+    }, 3000
+);
