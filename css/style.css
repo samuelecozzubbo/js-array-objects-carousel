@@ -25,6 +25,18 @@ img{
     object-fit: cover;
 }
 
+.imgcontainer{
+    text-align: right;
+    position: relative;
+}
+
+.imgtext{
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 .item{
     display: none;
 }
