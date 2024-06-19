@@ -115,3 +115,23 @@ up.addEventListener("click",
         thumbnail[activeItem].classList.add("thumbActive");
     }
 );
+
+//gestisco il click sul thumbnail
+for(let i = 0; i < images.length; i++){
+  thumbnail[i].addEventListener("click",
+    function() {
+      console.log("hai cliccato il thumbnail");
+      // Rimuoviamo la classe active dall'item attivo corrente
+      items[activeItem].classList.remove("active");
+      thumbnail[activeItem].classList.remove("thumbActive");
+
+      // Aggiorniamo activeItem con l'indice del thumbnail cliccato
+      activeItem = i;
+
+      // Aggiungiamo la classe active all'item e al thumbnail cliccati
+      items[activeItem].classList.add("active");
+      thumbnail[activeItem].classList.add("thumbActive");
+    }
+  );
+};
+
