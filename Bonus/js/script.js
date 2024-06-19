@@ -30,7 +30,8 @@ const images = [
   
 //prendo il container
 const itemsContainer = document.querySelector(".carousel-container");
-const thumbnailsContainer = document.querySelector(".thumbnails-container")
+const thumbnailsContainer = document.querySelector(".thumbnails-container");
+const playAndStop = document.querySelector(".playandstop");
 
 images.forEach((element) => {
     //creare ad ogni iterazione l'elemento da inserire
@@ -135,24 +136,45 @@ for(let i = 0; i < images.length; i++){
   );
 };
 
-//AUTOPLAY
-let autoplay = setInterval(   //Ripeti tot volte nel tempo questo:
-    function() {
-            // Rimuoviamo la classe active dall'item attivo corrente
-            items[activeItem].classList.remove("active");
-            thumbnail[activeItem].classList.remove("thumbActive");
-      
-            // Aggiorniamo activeItem con l'indice del thumbnail cliccato
-            if(activeItem < images.length - 1){
-              activeItem = activeItem + 1;
-              console.log(activeItem);
-            }else {
-              activeItem = 0;
-            }
-            
-      
-            // Aggiungiamo la classe active all'item e al thumbnail cliccati
-            items[activeItem].classList.add("active");
-            thumbnail[activeItem].classList.add("thumbActive"); 
-    }, 3000
+//AUTOPLAY WITH BUTTONS
+// Aggiungo i bottoni di start/stop 
+playAndStop.innerHTML += `
+  <button class="start-button">Start Autoplay</button>
+  <button class="stop-button">Stop Autoplay</button>
+`;
+// Seleziono i bottoni
+const startButton = document.querySelector(".start-button");
+const stopButton = document.querySelector(".stop-button");
+let autoplay;
+startButton.addEventListener("click",
+  function() {
+    autoplay = setInterval(   //Ripeti tot volte nel tempo questo:
+      function() {
+              // Rimuoviamo la classe active dall'item attivo corrente
+              items[activeItem].classList.remove("active");
+              thumbnail[activeItem].classList.remove("thumbActive");
+        
+              // Aggiorniamo activeItem con l'indice del thumbnail cliccato
+              if(activeItem < images.length - 1){
+                activeItem = activeItem + 1;
+                console.log(activeItem);
+              }else {
+                activeItem = 0;
+              }
+              
+        
+              // Aggiungiamo la classe active all'item e al thumbnail cliccati
+              items[activeItem].classList.add("active");
+              thumbnail[activeItem].classList.add("thumbActive"); 
+      }, 3000
+  );
+  }
 );
+
+//Stop autoplay
+stopButton.addEventListener("click",
+  function() {
+    clearInterval(autoplay);
+  }
+);
+
