@@ -23,7 +23,7 @@ const images = [
       image: 'img/05.webp',
       title: "Marvel's Avengers",
       text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay."
-    }
+    },
   ];
   
   console.log(images);
@@ -52,12 +52,14 @@ images.forEach((element) => {
 });
 //seleziono tutti gli elementi item in pagina
 const items = document.getElementsByClassName("item");
+const thumbnail = document.getElementsByClassName("thumbnail");
 let activeItem = 0;
 //mettiamo la calsse active al primo elemento per farlo vedere
 items[0].classList.add("active");
+thumbnail[0].classList.add("thumbActive");
 
 //inserisco i bottoni
-itemsContainer.innerHTML += `   <div class="arrowhead down">&#709;</div>
+thumbnailsContainer.innerHTML += `   <div class="arrowhead down">&#709;</div>
                                 <div class="arrowhead up">&#708;</div>`;
 
 
@@ -72,6 +74,7 @@ down.addEventListener("click",
         
         // Togliamo la classe active all'item attivo corrente
         items[activeItem].classList.remove("active");
+        thumbnail[activeItem].classList.remove("thumbActive");
 
         // Verifico se siamo all'ultima immagine
         if (activeItem === items.length - 1) {
@@ -82,8 +85,9 @@ down.addEventListener("click",
 
         // Mettiamo la classe active alla nuova immagine attiva
         items[activeItem].classList.add("active");
+        thumbnail[activeItem].classList.add("thumbActive");
     }
-)
+);
 
 //EVENTO CLICK UP
 
@@ -97,6 +101,7 @@ up.addEventListener("click",
         
         // Togliamo la classe active all'item attivo corrente
         items[activeItem].classList.remove("active");
+        thumbnail[activeItem].classList.remove("thumbActive");
 
         // Verifico se siamo alla prima immagine
         if (activeItem === 0) {
@@ -107,5 +112,6 @@ up.addEventListener("click",
 
         // Mettiamo la classe active alla nuova immagine attiva
         items[activeItem].classList.add("active");
+        thumbnail[activeItem].classList.add("thumbActive");
     }
-)
+);
