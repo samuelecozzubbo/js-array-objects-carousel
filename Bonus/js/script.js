@@ -30,6 +30,7 @@ const images = [
   
 //prendo il container
 const itemsContainer = document.querySelector(".carousel-container");
+const thumbnailsContainer = document.querySelector(".thumbnails-container")
 
 images.forEach((element) => {
     //creare ad ogni iterazione l'elemento da inserire
@@ -42,9 +43,12 @@ images.forEach((element) => {
                                 </div>       
                             </div>                           
                         </div>`;
+    let thumbnails = `  <div class = "thumbnail">
+                          <img src="${element.image}">      
+                        </div>`;
     //inseriamo il nuovo elemento nel contenitore
     itemsContainer.innerHTML += itemContent;
-    return itemContent;
+    thumbnailsContainer.innerHTML += thumbnails;
 });
 //seleziono tutti gli elementi item in pagina
 const items = document.getElementsByClassName("item");
@@ -82,6 +86,7 @@ down.addEventListener("click",
 )
 
 //EVENTO CLICK UP
+
 //seleziono il bottone up
 const up = document.querySelector(".up");
 
